@@ -105,7 +105,7 @@ public class Main {
         // After Promo Discount
         double afterPromoDiscount = afterQuantityDiscount;
 
-        double shippingCost;
+        double shippingCost = 0;
         if (discountCode.equals("SAVE10") && afterQuantityDiscount > 75.00) {
             afterPromoDiscount = afterQuantityDiscount-10;
             System.out.println("After Promotional Code (SAVE10 for >$75): $" + afterQuantityDiscount);
