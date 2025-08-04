@@ -108,12 +108,12 @@ public class Main {
         double shippingCost = 0;
         if (discountCode.equals("SAVE10") && afterQuantityDiscount > 75.00) {
             afterPromoDiscount = afterQuantityDiscount-10;
-            System.out.printf("After Promotional Code (SAVE10 for >$75): $%.2f\n",afterQuantityDiscount);
+            System.out.printf("After Promotional Code (SAVE10 for >$75): $%.2f\n",afterPromoDiscount);
         } else if (discountCode.equals("FREESHIP")) {
             shippingCost = 0;
             System.out.println("Free Shipping Promo Activated!");
         } else {
-            System.out.printf("After Promotional Code (No promotions availed): $%.2f\n", afterQuantityDiscount);
+            System.out.printf("After Promotional Code (No promotions availed): $%.2f\n", afterPromoDiscount);
         }
 
         // After Small Order Surcharge
