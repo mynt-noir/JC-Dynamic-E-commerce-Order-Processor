@@ -78,28 +78,28 @@ public class Main {
 
         // Subtotal
         double initialSubtotal = unitPrice*quantity;
-        System.out.println("Initial Subtotal: $" + initialSubtotal);
+        System.out.printf("Initial Subtotal: $%.2f\n", initialSubtotal);
 
         // After Tier Discount
         double afterTierDiscount = 0;
         if (customerTier.equalsIgnoreCase("Gold")) {
             afterTierDiscount = initialSubtotal*.85;
-            System.out.println("After Tier Discount (Gold - 15%): $" + afterTierDiscount);
+            System.out.printf("After Tier Discount (Gold - 15%%): $%.2f\n",afterTierDiscount);
         } else if (customerTier.equalsIgnoreCase("Silver")) {
             afterTierDiscount = initialSubtotal*.90;
-            System.out.println("After Tier Discount (Silver - 10%): $" + afterTierDiscount);
+            System.out.printf("After Tier Discount (Silver - 10%%): $%.2f\n",afterTierDiscount);
         } else {
             afterTierDiscount = initialSubtotal;
-            System.out.println("After Tier Discount (Regular - No Discount): $" + afterTierDiscount);
+            System.out.printf("After Tier Discount (Regular - No Discount): $%.2f\n",afterTierDiscount);
         }
 
         // After Quantity Discount
         double afterQuantityDiscount = afterTierDiscount;
         if (quantity >= 5) {
             afterQuantityDiscount = afterTierDiscount*.95;
-            System.out.println("After Quantity Discount (5% for >=5 items): $" + afterQuantityDiscount);
+            System.out.printf("After Quantity Discount (5 for >=5 items): $%.2f\n", afterQuantityDiscount);
         } else {
-            System.out.println("After Quantity Discount (No discount for < 5 items): $" + afterQuantityDiscount);
+            System.out.printf("After Quantity Discount (No discount for < 5 items): $%.2f\n",afterQuantityDiscount);
         }
 
         // After Promo Discount
@@ -108,17 +108,17 @@ public class Main {
         double shippingCost = 0;
         if (discountCode.equals("SAVE10") && afterQuantityDiscount > 75.00) {
             afterPromoDiscount = afterQuantityDiscount-10;
-            System.out.println("After Promotional Code (SAVE10 for >$75): $" + afterQuantityDiscount);
+            System.out.printf("After Promotional Code (SAVE10 for >$75): $%.2f\n",afterQuantityDiscount);
         } else if (discountCode.equals("FREESHIP")) {
             shippingCost = 0;
             System.out.println("Free Shipping Promo Activated!");
         } else {
-            System.out.println("After Promotional Code (No promotions availed): $" + afterQuantityDiscount);
+            System.out.printf("After Promotional Code (No promotions availed): $%.2f\n", afterQuantityDiscount);
         }
 
         // After Small Order Surcharge
         double afterSmallSurcharge = afterPromoDiscount < 25.00 ? (afterPromoDiscount + 3): afterPromoDiscount;
-        System.out.println("After Small Order Surcharge (if applicable): $"+ afterSmallSurcharge);
+        System.out.printf("After Small Order Surcharge (if applicable): $%.2f\n", afterSmallSurcharge);
 
         // Shipping Cost
         System.out.println();
@@ -126,15 +126,19 @@ public class Main {
             switch (shippingZone) {
                 case "ZoneA":
                     shippingCost = 5.00;
+                    System.out.printf("Shipping Cost: $%.2f (ZoneA)\n",shippingCost);
                     break;
                 case "ZoneB":
                     shippingCost = 12.50;
+                    System.out.printf("Shipping Cost: $%.2f (ZoneB)\n",shippingCost);
                     break;
                 case "ZoneC":
                     shippingCost = 20.00;
+                    System.out.printf("Shipping Cost: $%.2f (ZoneC)\n",shippingCost);
                     break;
                 default:
                     shippingCost = 25.00;
+                    System.out.printf("Shipping Cost: $%.2f\n",shippingCost);
                     break;
             }
         }
@@ -142,7 +146,7 @@ public class Main {
         // Final Order Total
         System.out.println();
         double finalOrderTotal = shippingCost+afterSmallSurcharge;
-        System.out.println("Final Order Total: $"+ finalOrderTotal);
+        System.out.printf("Final Order Total: $%.2f\n",finalOrderTotal);
 
 
 
